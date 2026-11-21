@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+}
+
+allprojects {
+    group = 'io.github.nithin999989'
+    version = '0.1.0'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+        withJavadocJar()
+        withSourcesJar()
+    }
+
+    repositories { mavenCentral() }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+                pom {
+                    name = 'BotGuard'
+                    description = 'Experimental, self-hosted request screening for Java services: rate rules plus opt-in heuristics. Not proven bot detection.'
+                    // PLACEHOLDER: this repository does not exist yet. Update
+                    // url/scm to the real repository before any publication.
+                    url = 'https://github.com/nithin999989/botguard'
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'nithin999989'
+                            name = 'Nithin Maturi'
+                        }
+                    }
+                    scm { // PLACEHOLDER: update once the repository exists
+                        connection = 'scm:git:git://github.com/nithin999989/botguard.git'
+                        url = 'https://github.com/nithin999989/botguard'
+                    }
+                }
+            }
+        }
+        // No remote repository is configured. To publish to Maven Central you must
+        // add a Sonatype Central Portal (or OSSRH) repository with your own
+        // credentials and a signing plugin. This build only produces the artifacts
+        // and POM metadata needed for that step.
+    }
+}
