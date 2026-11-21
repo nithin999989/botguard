@@ -121,7 +121,13 @@ v0.1 you wire the filter yourself.
 
 ## Building and testing
 
-`./gradlew build` (Gradle wrapper included; needs a JDK 11+ toolchain).
+Build with `./gradlew build` (needs a JDK 11+ toolchain). The repo includes
+the wrapper scripts (`gradlew`, `gradlew.bat`) and
+`gradle/wrapper/gradle-wrapper.properties`; the small `gradle-wrapper.jar`
+bootstrap is not committed yet, so the first build needs a local Gradle
+install (`gradle wrapper` regenerates the jar) or the jar copied from any
+Gradle 8.10 distribution. With any Gradle 8.x installed, `gradle build`
+also works directly.
 
 The test suite (20 tests) covers the engine's verdict logic, window eviction,
 key-space and per-key bounds under adversarial floods, concurrency, and the
