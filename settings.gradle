@@ -1,0 +1,2 @@
+rootProject.name = 'botguard'
+include 'botguard-core', 'botguard-spring-boot'
